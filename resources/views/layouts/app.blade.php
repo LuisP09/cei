@@ -22,49 +22,52 @@
 </head>
 
 <body class="{{ $class ?? '' }}">
-
-    @guest
+    <div id="app">
+        @guest
         @yield('content')
-    @endguest
+        @endguest
 
-    @auth
+        @auth
         @if (in_array(request()->route()->getName(), ['sign-in-static', 'sign-up-static', 'login', 'register', 'recover-password', 'rtl', 'virtual-reality']))
-            @yield('content')
+        @yield('content')
         @else
-            @if (!in_array(request()->route()->getName(), ['profile', 'profile-static']))
-                <div class="min-height-300 bg-primary position-absolute w-100"></div>
-            @elseif (in_array(request()->route()->getName(), ['profile-static', 'profile']))
-                <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
-                    <span class="mask bg-primary opacity-6"></span>
-                </div>
-            @endif
-            @include('layouts.navbars.auth.sidenav')
-                <main class="main-content border-radius-lg">
-                    @yield('content')
-                </main>
-            @include('components.fixed-plugin')
+        @if (!in_array(request()->route()->getName(), ['profile', 'profile-static']))
+        <div class="min-height-300 bg-primary position-absolute w-100"></div>
+        @elseif (in_array(request()->route()->getName(), ['profile-static', 'profile']))
+        <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
+            <span class="mask bg-primary opacity-6"></span>
+        </div>
         @endif
-    @endauth
+        @include('layouts.navbars.auth.sidenav')
+        <main class="main-content border-radius-lg">
+            @yield('content')
+        </main>
+        @include('components.fixed-plugin')
+        @endif
+        @endauth
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
+        <!--   Core JS Files   -->
+        <script src="assets/js/core/popper.min.js" type="application/javascript"></script>
+        <script src="assets/js/core/bootstrap.min.js" type="application/javascript"></script>
+        <script src="assets/js/plugins/perfect-scrollbar.min.js" type="application/javascript"></script>
+        <script src="assets/js/plugins/smooth-scrollbar.min.js" type="application/javascript"></script>
+        <!--se agrego para que el menu desplegable funcione-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"crossorigin="anonymous"
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="assets/js/argon-dashboard.js"></script>
-    @stack('js');
+        </script>
+        <!-- Github buttons -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="assets/js/argon-dashboard.js" type="application/javascript"></script>
+        @stack('js');
+    </div>
 </body>
 
 </html>
