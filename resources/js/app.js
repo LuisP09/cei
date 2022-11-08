@@ -3,8 +3,10 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+ import PerfectScrollbar from 'perfect-scrollbar';
+ window.PerfectScrollbar = PerfectScrollbar;
 import './bootstrap';
+import './custom';
 import { createApp } from 'vue';
 
 /**
@@ -14,9 +16,9 @@ import { createApp } from 'vue';
  */
 
 const app = createApp({});
-
+/*
 import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+app.component('example-component', ExampleComponent);*/
 import UsuariosComponent from './components/UsuariosComponent.vue';
 app.component('usuarios-component', UsuariosComponent);
 

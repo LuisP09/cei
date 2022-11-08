@@ -116,7 +116,7 @@
         <!--Graficaaaa-->
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
-                <div class="card-header pb-10 pt-10 bg-transparent" style="background-image: url('./img/Cei-carrusel2.png');
+                <div class="card-header pb-10 pt-10 bg-transparent" style="background-image: url('./img/Cei-carrusel-3.jpeg');
                         background-size: cover;">
                     <h6 class="text-capitalize">CEI</h6>
                     <p class="text-sm mb-0">
@@ -140,7 +140,7 @@
             <div class="card card-carousel overflow-hidden h-100 p-0">
                 <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                     <div class="carousel-inner border-radius-lg h-100">
-                        <div class="carousel-item h-100 active" style="background-image: url('./img/Cei-carrusel1.jpg');
+                        <div class="carousel-item h-100 active" style="background-image: url('./img/Cei-carrusel-1.jpeg');
             background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -152,7 +152,7 @@
                                     -->
                             </div>
                         </div>
-                        <div class="carousel-item h-100" style="background-image: url('./img/Cei-carrusel2.png');
+                        <div class="carousel-item h-100" style="background-image: url('./img/Cei-carrusel-2.jpeg');
             background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -163,7 +163,7 @@
                                     ability to learn.</p>
                             </div>
                         </div>
-                        <div class="carousel-item h-100" style="background-image: url('./img/carousel-3.jpg');
+                        <div class="carousel-item h-100" style="background-image: url('./img/Cei-carrusel-3.jpeg');
             background-size: cover;">
                             <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                 <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">

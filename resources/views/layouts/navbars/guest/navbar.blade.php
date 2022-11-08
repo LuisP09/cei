@@ -27,6 +27,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                    href="{{ route('nosotros') }}">
+                                    <i class="fa fa-solid fa-building opacity-6 text-dark me-1"></i>
+                                    Nosotros
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('register') }}">
                                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                     Registrarse

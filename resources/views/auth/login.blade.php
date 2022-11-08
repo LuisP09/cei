@@ -10,7 +10,7 @@
     </div>
     <main class="main-content  mt-0">
         <section>
-            <div class="page-header min-vh-100">
+            <div class="page-header min-vh-100"><!-- le quite min-vh-100 y agregue un REM en argon-dashboard.css en page-header-->
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
@@ -58,7 +58,7 @@
                             class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                                 style="background-image: url('/img/portada-ng.jpg');
-              background-size: cover;">
+                                background-size: cover; background-position: center;">
                                 <!--<span class="mask bg-gradient-primary opacity-6"></span>
                                 <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new
                                     currency"</h4>

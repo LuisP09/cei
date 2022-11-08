@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
+            @include('layouts.footers.auth.footer')
         </div>
     </main>
-    @include('layouts.footers.guest.footer')
 @endsection

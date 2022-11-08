@@ -46,13 +46,18 @@
         @endif
         @endauth
 
+        @stack('js');
+    </div>
+    
         <!--   Core JS Files   -->
+        <!-- se agrego manualmente el jquery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js" type="text/javascript"></script>
         <script src="assets/js/core/popper.min.js" type="application/javascript"></script>
         <script src="assets/js/core/bootstrap.min.js" type="application/javascript"></script>
         <script src="assets/js/plugins/perfect-scrollbar.min.js" type="application/javascript"></script>
         <script src="assets/js/plugins/smooth-scrollbar.min.js" type="application/javascript"></script>
         <!--se agrego para que el menu desplegable funcione-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"crossorigin="anonymous"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"crossorigin="anonymous"></script>
         <script>
             var win = navigator.platform.indexOf('Win') > -1;
             if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -66,8 +71,6 @@
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="assets/js/argon-dashboard.js" type="application/javascript"></script>
-        @stack('js');
-    </div>
 </body>
 
 </html>

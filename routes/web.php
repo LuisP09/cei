@@ -29,6 +29,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\UsuariosController;
 
 Route::get('/', function () {return redirect('/inicio');})->middleware('guest');
@@ -42,6 +43,7 @@ Route::get('/', function () {return redirect('/inicio');})->middleware('guest');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/inicio', [InicioController::class, 'index'])->middleware('guest')->name('inicio');
+	Route::get('/nosotros', [NosotrosController::class, 'index'])->middleware('guest')->name('nosotros');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
@@ -55,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/usuarios', [UsuariosController::class, 'index'])->name('r.users');
 	Route::get('api/usuarios',[UsuariosController::class, 'listar']);
+	Route::post('api/guardar_usuario',[UsuariosController::class, 'guardar']);
 
 });
 /*
