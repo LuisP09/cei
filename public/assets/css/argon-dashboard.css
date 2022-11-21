@@ -22258,6 +22258,6 @@ pre[class*=language-] {
     justify-content: flex-start !important;
   }
   .justify-content-end-media {
-    justify-content: flex-end !important;
+    justify-content: flex-end ;
   }
 }
