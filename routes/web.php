@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/usuarios', [UsuariosController::class, 'index'])->name('r.users');
 	Route::get('api/usuarios',[UsuariosController::class, 'listar']);
 	Route::post('api/guardar_usuario',[UsuariosController::class, 'guardar']);
+	Route::post('api/eliminar_usuario',[UsuariosController::class, 'eliminar']);
 
 });
 /*

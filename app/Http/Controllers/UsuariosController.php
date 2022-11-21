@@ -31,4 +31,9 @@ class UsuariosController extends Controller
 
             $libro->save();
     }
+
+    public function eliminar(Request $request){
+        $libro = Usuarios::find($request->id);
+        $libro->delete();
+    }
 }

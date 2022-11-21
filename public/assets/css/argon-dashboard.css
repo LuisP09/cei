@@ -22245,3 +22245,19 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }
+.justify-content-end-media{
+  justify-content: inherit !important;
+}
+
+.justify-content-center-media {
+  justify-content: center !important;
+}
+
+@media (min-width: 768px) {
+  .justify-content-center-media {
+    justify-content: flex-start !important;
+  }
+  .justify-content-end-media {
+    justify-content: flex-end !important;
+  }
+}

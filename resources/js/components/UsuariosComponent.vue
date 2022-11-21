@@ -79,19 +79,7 @@
                                              {{ users.email }}
                                         </p>
                                     </td>
-                                    <td class="align-middle text-end">
-                                        <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                            <button class="dropdown-item" @click="fnEditarUsuario(users)">
-                                                <span class="btn-inner--icon"><i class="ni ni-collection"></i></span>
-                                                <span class="btn-inner--text">Editar</span>
-                                            </button>
-                                            <button class="dropdown-item" >
-                                                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                                                <span class="btn-inner--text">Eliminar</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
+                                    <!-- <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
@@ -107,16 +95,15 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Acciones
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#" @click="fnEditarUsuario(users)">Editar</a></li>
-                                                <li><a class="dropdown-item" href="#">Eliminar</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item" href="#" @click="fnMostrarModalEditarUsuario(users)">Editar</a></li>
+                                                <li><a class="dropdown-item" href="#" @click="fnMostrarModalEliminarUsuario(users)">Eliminar</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -157,7 +144,7 @@
                                         <input type="text" class="form-control" v-model="nuevoUsuario.id" placeholder="ISBN de Libro"/>
                                     </div>
                                 </div>
- -->
+                                 -->
                                 <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nombre de Usuario</label>
@@ -185,7 +172,7 @@
                                     <input type="text" class="form-control" v-model="nuevoUsuario.email" placeholder="Descripción del Libro" />
                                 </div>
                                 </div> -->
-<!--
+                                <!--
                                 <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Precio del libro</label>
@@ -227,7 +214,7 @@
                                     </select>
                                 </div>
                                 </div>
--->
+                                -->
                                 <div class="col-md-12" v-if="errores">
                                 <div class="alert alert-warning" role="alert">
                                     <span class="alert-inner--icon" ><i class="ni ni-like-2"></i ></span>
@@ -248,7 +235,32 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Nuevo Usuario -->
+        <!-- End Modal Nuevo Usuario -->
+        <!-- Modal Eliminar-->
+        <div class="modal fade" id="modal-eliminar" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-notification">Su atención es requerida</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="py-3 text-center">
+                        <i class="ni ni-bell-55 ni-3x"></i>
+                        <h4 class="text-gradient text-danger mt-4">Está seguro de eliminar el siguiente registro</h4>
+                        <p>ISBN: {{ usuario_eliminar.id }}, Nombre: {{ usuario_eliminar.firstname }}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="fnEliminarUsuario(usuario)">Eliminar</button>
+                        <button type="button" class="btn btn-secondary ml-auto" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Modal Eliminar-->
     </div>
 </template>
 <script>
@@ -262,6 +274,7 @@ export default {
             lista_usuarios: {},
             nuevoUsuario:{},
             errores:"",
+            usuario_eliminar:{},
         };
     },
     methods: {
@@ -278,7 +291,7 @@ export default {
                     console.log(error.response.data);
                 });
         },
-        fnEditarUsuario(usuario) {
+        fnMostrarModalEditarUsuario(usuario) {
             this.nuevoUsuario = usuario;
             $("#modalNuevoUsuario").modal("toggle");
         },
@@ -313,9 +326,22 @@ export default {
                 }
                 });
         },
-    },
-    
-    
+        fnMostrarModalEliminarUsuario(usuario) {
+            this.usuario_eliminar = usuario;
+            $("#modal-eliminar").modal("toggle");
+        },
+        async fnEliminarUsuario(usuario) {
+            await axios.post("api/eliminar_usuario", this.usuario_eliminar).then((respuesta) => {
+                console.log(respuesta);
+                $("#modal-eliminar").modal("toggle");
+                this.usuario_eliminar = {};
+                this.listar_usuarios();
+                })
+                .catch((error) => {
+                console.log(error.response.data);
+                });
+        },
+    },    
 };
 
 </script>

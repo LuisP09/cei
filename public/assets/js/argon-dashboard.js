@@ -23149,7 +23149,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       lista_usuarios: {},
       nuevoUsuario: {},
-      errores: ""
+      errores: "",
+      usuario_eliminar: {}
     };
   },
   methods: {
@@ -23179,7 +23180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    fnEditarUsuario: function fnEditarUsuario(usuario) {
+    fnMostrarModalEditarUsuario: function fnMostrarModalEditarUsuario(usuario) {
       this.nuevoUsuario = usuario;
       $("#modalNuevoUsuario").modal("toggle");
     },
@@ -23225,6 +23226,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee2);
+      }))();
+    },
+    fnMostrarModalEliminarUsuario: function fnMostrarModalEliminarUsuario(usuario) {
+      this.usuario_eliminar = usuario;
+      $("#modal-eliminar").modal("toggle");
+    },
+    fnEliminarUsuario: function fnEliminarUsuario(usuario) {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.post("api/eliminar_usuario", _this3.usuario_eliminar).then(function (respuesta) {
+                  console.log(respuesta);
+                  $("#modal-eliminar").modal("toggle");
+                  _this3.usuario_eliminar = {};
+                  _this3.listar_usuarios();
+                })["catch"](function (error) {
+                  console.log(error.response.data);
+                });
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }
@@ -23309,91 +23338,21 @@ var _hoisted_19 = {
   "class": "text-sm font-weight-bold mb-0"
 };
 var _hoisted_20 = {
-  "class": "align-middle text-end"
-};
-var _hoisted_21 = {
-  "class": "d-flex px-3 py-1 justify-content-center align-items-center"
-};
-var _hoisted_22 = ["onClick"];
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--icon"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "ni ni-collection"
-})], -1 /* HOISTED */);
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--text"
-}, "Editar", -1 /* HOISTED */);
-var _hoisted_25 = [_hoisted_23, _hoisted_24];
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "dropdown-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--icon"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "ni ni-fat-remove"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--text"
-}, "Eliminar")], -1 /* HOISTED */);
-var _hoisted_27 = {
-  "class": "text-right"
-};
-var _hoisted_28 = {
   "class": "dropdown"
 };
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "btn btn-sm btn-icon-only text-light",
-  href: "#",
-  role: "button",
-  "data-bs-toggle": "dropdown",
-  "aria-haspopup": "true",
-  "aria-expanded": "false"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fas fa-ellipsis-v"
-})], -1 /* HOISTED */);
-var _hoisted_30 = {
-  "class": "dropdown-menu dropdown-menu-right dropdown-menu-arrow"
-};
-var _hoisted_31 = ["onClick"];
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--icon"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "ni ni-collection"
-})], -1 /* HOISTED */);
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--text"
-}, "Editar", -1 /* HOISTED */);
-var _hoisted_34 = [_hoisted_32, _hoisted_33];
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "dropdown-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--icon"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "ni ni-fat-remove"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "btn-inner--text"
-}, "Eliminar")], -1 /* HOISTED */);
-var _hoisted_36 = {
-  "class": "dropdown"
-};
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   "class": "btn btn-secondary dropdown-toggle",
   href: "#",
   role: "button",
   "data-bs-toggle": "dropdown",
   "aria-expanded": "false"
 }, " Acciones ", -1 /* HOISTED */);
-var _hoisted_38 = {
+var _hoisted_22 = {
   "class": "dropdown-menu"
 };
-var _hoisted_39 = ["onClick"];
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "dropdown-item",
-  href: "#"
-}, "Eliminar")], -1 /* HOISTED */);
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "dropdown-item",
-  href: "#"
-}, "Something else here")], -1 /* HOISTED */);
-var _hoisted_42 = {
+var _hoisted_23 = ["onClick"];
+var _hoisted_24 = ["onClick"];
+var _hoisted_25 = {
   "class": "modal fade",
   id: "modalNuevoUsuario",
   tabindex: "-1",
@@ -23401,13 +23360,13 @@ var _hoisted_42 = {
   "aria-labelledby": "exampleModalLabel",
   "aria-hidden": "true"
 };
-var _hoisted_43 = {
+var _hoisted_26 = {
   "class": "modal-dialog"
 };
-var _hoisted_44 = {
+var _hoisted_27 = {
   "class": "modal-content"
 };
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "modal-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
   "class": "modal-title",
@@ -23420,58 +23379,106 @@ var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "aria-hidden": "true"
 }, "×")])], -1 /* HOISTED */);
-var _hoisted_46 = {
+var _hoisted_29 = {
   "class": "modal-body"
 };
-var _hoisted_47 = {
+var _hoisted_30 = {
   "class": "row"
 };
-var _hoisted_48 = {
+var _hoisted_31 = {
   "class": "col-md-6"
 };
-var _hoisted_49 = {
+var _hoisted_32 = {
   "class": "form-group"
 };
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre de Usuario", -1 /* HOISTED */);
-var _hoisted_51 = {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre de Usuario", -1 /* HOISTED */);
+var _hoisted_34 = {
   "class": "col-md-6"
 };
-var _hoisted_52 = {
+var _hoisted_35 = {
   "class": "form-group"
 };
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre", -1 /* HOISTED */);
-var _hoisted_54 = {
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre", -1 /* HOISTED */);
+var _hoisted_37 = {
   "class": "col-md-6"
 };
-var _hoisted_55 = {
+var _hoisted_38 = {
   "class": "form-group"
 };
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Apellido", -1 /* HOISTED */);
-var _hoisted_57 = {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Apellido", -1 /* HOISTED */);
+var _hoisted_40 = {
   key: 0,
   "class": "col-md-12"
 };
-var _hoisted_58 = {
+var _hoisted_41 = {
   "class": "alert alert-warning",
   role: "alert"
 };
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "alert-inner--icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "ni ni-like-2"
 })], -1 /* HOISTED */);
-var _hoisted_60 = {
+var _hoisted_43 = {
   "class": "alert-inner--text"
 };
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Warning!", -1 /* HOISTED */);
-var _hoisted_62 = {
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Warning!", -1 /* HOISTED */);
+var _hoisted_45 = {
   "class": "modal-footer"
 };
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "button",
   "class": "btn btn-secondary",
   "data-bs-dismiss": "modal"
 }, " Cerrar ", -1 /* HOISTED */);
+var _hoisted_47 = {
+  "class": "modal fade",
+  id: "modal-eliminar",
+  tabindex: "-1",
+  role: "dialog",
+  "aria-labelledby": "modal-notification",
+  "aria-hidden": "true"
+};
+var _hoisted_48 = {
+  "class": "modal-dialog modal-danger modal-dialog-centered modal-",
+  role: "document"
+};
+var _hoisted_49 = {
+  "class": "modal-content"
+};
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "modal-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", {
+  "class": "modal-title",
+  id: "modal-title-notification"
+}, "Su atención es requerida"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "btn-close",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "aria-hidden": "true"
+}, "×")])], -1 /* HOISTED */);
+var _hoisted_51 = {
+  "class": "modal-body"
+};
+var _hoisted_52 = {
+  "class": "py-3 text-center"
+};
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "ni ni-bell-55 ni-3x"
+}, null, -1 /* HOISTED */);
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "text-gradient text-danger mt-4"
+}, "Está seguro de eliminar el siguiente registro", -1 /* HOISTED */);
+var _hoisted_55 = {
+  "class": "modal-footer"
+};
+var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "btn btn-secondary ml-auto",
+  "data-bs-dismiss": "modal"
+}, "Cancelar", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n            <div class=\"alert alert-neutral alert-dismissible fade show\" role=\"alert\">\r\n                <--Botones principales->\r\n                <div class=\"d-grid gap-2 d-md-flex justify-content-md-end\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-dark me-md-2\" @click=\"fnNuevoLibro()\" id=\"nuevoLibro\">\r\n                        Nuevo\r\n                    </button>\r\n                    <button type=\"button\" class=\"btn btn-sm btn-dark me-md-2\" @click=\"listar_libros()\">\r\n                        Recargar\r\n                    </button>\r\n                </div>\r\n                <--End Botones principales-> \r\n            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Header"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Botones principales"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -23490,51 +23497,53 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, " Recargar ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("End Botones principales")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("End Header"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabla principal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.lista_usuarios, function (users) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: users.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.id) + " ", 1 /* TEXT */), _hoisted_14])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.username), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.firstname), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.email), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": "dropdown-item",
-      onClick: function onClick($event) {
-        return $options.fnEditarUsuario(users);
-      }
-    }, _hoisted_25, 8 /* PROPS */, _hoisted_22), _hoisted_26])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": "dropdown-item",
-      onClick: function onClick($event) {
-        return $options.fnEditarUsuario(users);
-      }
-    }, _hoisted_34, 8 /* PROPS */, _hoisted_31), _hoisted_35])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.id) + " ", 1 /* TEXT */), _hoisted_14])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.username), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.firstname), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(users.email), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td class=\"text-right\">\r\n                                        <div class=\"dropdown\">\r\n                                            <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                                <i class=\"fas fa-ellipsis-v\"></i>\r\n                                            </a>\r\n                                            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\" >\r\n                                                <button class=\"dropdown-item\" @click=\"fnEditarUsuario(users)\">\r\n                                                    <span class=\"btn-inner--icon\"><i class=\"ni ni-collection\"></i></span>\r\n                                                    <span class=\"btn-inner--text\">Editar</span>\r\n                                                </button>\r\n                                                <button class=\"dropdown-item\" >\r\n                                                    <span class=\"btn-inner--icon\"><i class=\"ni ni-fat-remove\"></i></span>\r\n                                                    <span class=\"btn-inner--text\">Eliminar</span>\r\n                                                </button>\r\n                                            </div>\r\n                                        </div>\r\n                                    </td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       "class": "dropdown-item",
       href: "#",
       onClick: function onClick($event) {
-        return $options.fnEditarUsuario(users);
+        return $options.fnMostrarModalEditarUsuario(users);
       }
-    }, "Editar", 8 /* PROPS */, _hoisted_39)]), _hoisted_40, _hoisted_41])])])]);
-  }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Tabla principal ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Page content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal Nuevo Usuario "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [_hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <div class=\"row\">\r\n                                <div class=\"col-md-6\">\r\n                                    <img :src=\"'/storage/' + nuevoLibro.url_imagen\" width=\"120px\">\r\n                                </div>\r\n                                <div class=\"col-md-6\">\r\n                                    <input type=\"file\" @change=\"obtenerImagen\">\r\n                                </div>\r\n                            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-6\">\r\n                                    <div class=\"form-group\">\r\n                                        <label>ISBN del libro</label>\r\n                                        <input type=\"text\" class=\"form-control\" v-model=\"nuevoUsuario.id\" placeholder=\"ISBN de Libro\"/>\r\n                                    </div>\r\n                                </div>\r\n "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, "Editar", 8 /* PROPS */, _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      "class": "dropdown-item",
+      href: "#",
+      onClick: function onClick($event) {
+        return $options.fnMostrarModalEliminarUsuario(users);
+      }
+    }, "Eliminar", 8 /* PROPS */, _hoisted_24)])])])])]);
+  }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Tabla principal ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Page content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal Nuevo Usuario "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <div class=\"row\">\r\n                                <div class=\"col-md-6\">\r\n                                    <img :src=\"'/storage/' + nuevoLibro.url_imagen\" width=\"120px\">\r\n                                </div>\r\n                                <div class=\"col-md-6\">\r\n                                    <input type=\"file\" @change=\"obtenerImagen\">\r\n                                </div>\r\n                            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-6\">\r\n                                    <div class=\"form-group\">\r\n                                        <label>ISBN del libro</label>\r\n                                        <input type=\"text\" class=\"form-control\" v-model=\"nuevoUsuario.id\" placeholder=\"ISBN de Libro\"/>\r\n                                    </div>\r\n                                </div>\r\n                                 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.nuevoUsuario.username = $event;
     }),
     placeholder: "Nombre de Usuario"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.username]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.username]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.nuevoUsuario.firstname = $event;
     }),
     placeholder: "Nombre"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.firstname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [_hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.firstname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.nuevoUsuario.lastname = $event;
     }),
     placeholder: "Apellido"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.lastname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Descripción del libro</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"nuevoUsuario.email\" placeholder=\"Descripción del Libro\" />\r\n                                </div>\r\n                                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Precio del libro</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"nuevoLibro.precio\" placeholder=\"Precio del Libro\" />\r\n                                </div>\r\n                                </div>\r\n\r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Categoria</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_categoria\" >\r\n                                    <option v-for=\"categoria in lista_categorias\" :key=\"categoria.id\" v-bind:value=\"categoria.id\" >\r\n                                        {{ categoria.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n\r\n                                \r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Autor</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_autor\" >\r\n                                    <option v-for=\"autor in lista_autores\" :key=\"autor.id\" v-bind:value=\"autor.id\" >\r\n                                        {{ autor.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n\r\n                                \r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Editorial</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_editorial\" >\r\n                                    <option v-for=\"editorial in lista_editoriales\" :key=\"editorial.id\" v-bind:value=\"editorial.id\" >\r\n                                        {{ editorial.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n"), $data.errores ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_60, [_hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errores), 1 /* TEXT */)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [_hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nuevoUsuario.lastname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Descripción del libro</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"nuevoUsuario.email\" placeholder=\"Descripción del Libro\" />\r\n                                </div>\r\n                                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Precio del libro</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"nuevoLibro.precio\" placeholder=\"Precio del Libro\" />\r\n                                </div>\r\n                                </div>\r\n\r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Categoria</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_categoria\" >\r\n                                    <option v-for=\"categoria in lista_categorias\" :key=\"categoria.id\" v-bind:value=\"categoria.id\" >\r\n                                        {{ categoria.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n\r\n                                \r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Autor</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_autor\" >\r\n                                    <option v-for=\"autor in lista_autores\" :key=\"autor.id\" v-bind:value=\"autor.id\" >\r\n                                        {{ autor.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n\r\n                                \r\n                                <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label>Editorial</label>\r\n                                    <select class=\"form-control\" v-model=\"nuevoLibro.id_editorial\" >\r\n                                    <option v-for=\"editorial in lista_editoriales\" :key=\"editorial.id\" v-bind:value=\"editorial.id\" >\r\n                                        {{ editorial.nombre }}\r\n                                    </option>\r\n                                    </select>\r\n                                </div>\r\n                                </div>\r\n                                "), $data.errores ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_43, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errores), 1 /* TEXT */)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-primary",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.guardar();
     })
-  }, " Guardar ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal Nuevo Usuario ")]);
+  }, " Guardar ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Modal Nuevo Usuario "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal Eliminar"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, _hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "ISBN: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.usuario_eliminar.id) + ", Nombre: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.usuario_eliminar.firstname), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "btn btn-primary",
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return $options.fnEliminarUsuario(_ctx.usuario);
+    })
+  }, "Eliminar"), _hoisted_56])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("End Modal Eliminar")]);
 }
 
 /***/ }),
