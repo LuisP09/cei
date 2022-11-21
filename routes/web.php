@@ -53,7 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
+
 	Route::post('logout', [LoginController::class, 'logout'])->name('out');
+	Route::post('login', [LoginController::class, 'login'])->name('loginn');
+
 
 	Route::get('/usuarios', [UsuariosController::class, 'index'])->name('r.users');
 	Route::get('api/usuarios',[UsuariosController::class, 'listar']);
